@@ -1,0 +1,13 @@
+.followers {
+  width: 90vw;
+  margin: 100px auto;
+}
+.followers__container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 90vw;
+}
+
+.user {
+  margin: 20px auto;
+}

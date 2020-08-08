@@ -1,10 +1,12 @@
 import React, { Component } from "react"
 import "./user.css"
 import GitHubLogo from "../../assets/imgages/github-logo.png"
-
+import { Link } from "react-router-dom"
 const defaultAvatar = "https://www.w3schools.com/howto/img_avatar.png"
 
 class User extends Component {
+  componentDidMount() {}
+
   render() {
     const {
       avatar_url,
@@ -15,17 +17,17 @@ class User extends Component {
       following,
       public_repos: repo,
     } = this.props.data
+
     return (
       <>
         <div className='user'>
           <div className='user__container'>
-            <div className='user__topAvatar'>
-              <img
-                className='user__avatar'
-                src={avatar_url ? avatar_url : defaultAvatar}
-                alt='avatar'
-              />
-            </div>
+            <img
+              className='user__avatar'
+              src={avatar_url ? avatar_url : defaultAvatar}
+              alt='avatar'
+            />
+
             <div className='user__title--container'>
               <h3>{name}</h3>
               <p>@{login}</p>
@@ -39,7 +41,14 @@ class User extends Component {
           </div>
           <div className='user__info'>
             <div className='user__Followers user__stats'>
-              <h3>Followers</h3>
+              <Link
+                to={{
+                  pathname: "/followers",
+                  search: `?${login}`,
+                }}
+              >
+                <h3>Followers</h3>
+              </Link>
               <p>{followers}</p>
             </div>
             <div className='user__Following user__stats'>

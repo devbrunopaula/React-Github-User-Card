@@ -1,7 +1,11 @@
 import React from "react"
 import { gitHubApi } from "./api/githubApi"
 import "./App.css"
-import User from "./components/user/User"
+
+import { Switch, Route } from "react-router-dom"
+import Home from "./components/Home/Home"
+import Followers from "./components/Followers/Followers"
+import Nav from "./components/Nav/Nav"
 
 class App extends React.Component {
   state = {
@@ -25,11 +29,12 @@ class App extends React.Component {
     }
   }
 
+  handleInputChange = inputValue => {
+    this.setState({ searchedUser: inputValue })
+  }
+
   componentDidMount() {
     this.fetchUser()
-    // setTimeout(() => {
-    //   this.fetchUser()
-    // }, 2000)
   }
   componentDidUpdate(prevProps, prevState) {
     if (this.state.searchedUser !== prevState.searchedUser) {
@@ -39,34 +44,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='app'>
-        <h1 className='app__title'>Github User Card</h1>
-        <form>
-          <div className='user__searchConainter'>
-            <input
-              className='user__searchInput'
-              name='s'
-              type='search'
-              results={5}
-              placeholder='Search a User...'
-              value={this.state.searchedUser}
-              onChange={e => this.setState({ searchedUser: e.target.value })}
+      <>
+        <Nav />
+        <Switch>
+          <Route path='/followers'>
+            <Followers searchedUser={this.state.user.login} />
+          </Route>
+          <Route path='/'>
+            <Home
+              user={this.state.user}
+              searchedUser={this.state.searchedUser}
+              handleInputChange={this.handleInputChange}
             />
-          </div>
-        </form>
-        <User data={this.state.user} />
-
-        <div className='app__status'>
-          {this.state.searchedUser.length > 1 ? (
-            <img
-              src={`http://ghchart.rshah.org/${this.state.searchedUser}`}
-              alt={`${this.state.searchedUser}'s Github chart`}
-            />
-          ) : (
-            ""
-          )}
-        </div>
-      </div>
+          </Route>
+        </Switch>
+      </>
     )
   }
 }
