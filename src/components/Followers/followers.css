@@ -11,3 +11,7 @@
 .user {
   margin: 20px auto;
 }
+
+.followers__title {
+  color: var(--cardTop);
+}

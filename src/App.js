@@ -36,11 +36,11 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchUser()
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.searchedUser !== prevState.searchedUser) {
-      this.fetchUser()
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.searchedUser !== prevState.searchedUser) {
+  //     // this.fetchUser()
+  //   }
+  // }
 
   render() {
     return (
@@ -55,6 +55,7 @@ class App extends React.Component {
               user={this.state.user}
               searchedUser={this.state.searchedUser}
               handleInputChange={this.handleInputChange}
+              fetchUser={this.fetchUser}
             />
           </Route>
         </Switch>

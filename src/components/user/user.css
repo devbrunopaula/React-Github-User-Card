@@ -52,10 +52,12 @@
   color: white;
   width: 100%;
   position: relative;
-  /* top: -2px; */
+  /* top: px; */
   /* padding-top: 35px; */
 }
-
+.user__title--container h3 {
+  padding-top: 20px;
+}
 .user__title--container p {
   padding: 10px 0;
 }
@@ -66,7 +68,7 @@
   width: 80px;
   border-radius: 50%;
   position: relative;
-  bottom: -36px;
+  bottom: -16px;
   border: 0;
   outline: none;
   cursor: pointer;

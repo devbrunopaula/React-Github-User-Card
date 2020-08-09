@@ -27,9 +27,25 @@
   display: inline-block;
   height: 40px;
   font-size: 1.6rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   background-color: transparent;
   color: var(--cardButton);
   outline: none;
   border: none;
+}
+
+.app__search--button {
+  height: 40px;
+  width: 110px;
+  /* padding: 1rem; */
+  border: none;
+  background: rgb(107, 106, 106);
+  font-size: 1.6rem;
+  border-radius: 0 20px 20px 0;
+  color: white;
+  outline: none;
+}
+
+.app__search--button:hover {
+  background: rgb(92, 90, 90);
 }
